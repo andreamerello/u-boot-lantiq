@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ awk -f tools/lantiq_ram_init_uart.awk -v soc=vr9 board/avm/fb3370/ddr_settings.h > ddr_settings
+
+tools/lantiq_uart_image.pl ddr_settings u-boot.srec u-boot.asc
