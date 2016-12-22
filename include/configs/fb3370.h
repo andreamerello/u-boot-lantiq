@@ -50,7 +50,7 @@
 /*#define CONFIG_FLASH_CFI_MTD */
 #define CONFIG_CMD_MTD
 #define CONFIG_CMD_MTDPARTS
-#define MTDIDS_DEFAULT			"nor0=cfi,nor1=spi0.4,nand0=nand-xway"
+#define MTDIDS_DEFAULT			"nor0=spi0.4,nand0=nand-xway"
 
 /* Environment */
 #define CONFIG_ENV_SPI_BUS		CONFIG_SPL_SPI_BUS
