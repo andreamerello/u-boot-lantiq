@@ -68,7 +68,7 @@
 #define CONFIG_ENV_SECT_SIZE		(64 * 1024)
 
 #define MTDPARTS_DEFAULT		\
-	"mtdparts=spi0.4:256k(uboot),256k(uboot_env)"
+	"mtdparts=spi0.4:192k(uboot),64k(uboot_env)"
 #elif defined(CONFIG_SYS_BOOT_NANDSPL)
 #define CONFIG_SPL_TPL_OFFS		0x800
 #define CONFIG_SPL_TPL_SIZE		0x5000
