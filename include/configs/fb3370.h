@@ -45,6 +45,8 @@
 #define CONFIG_CMD_MTDPARTS
 #define MTDIDS_DEFAULT			"nor0=spi0.4,nand0=nand-xway"
 
+#define CONFIG_CMD_GPIO
+
 /* Environment */
 #define CONFIG_ENV_SPI_BUS		CONFIG_SPL_SPI_BUS
 #define CONFIG_ENV_SPI_CS		CONFIG_SPL_SPI_CS
