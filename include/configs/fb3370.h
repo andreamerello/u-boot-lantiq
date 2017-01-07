@@ -53,7 +53,7 @@
 
 #if defined(CONFIG_SYS_BOOT_SFSPL)
 #define CONFIG_SPL_U_BOOT_OFFS		0x7000
-#define CONFIG_SPL_U_BOOT_SIZE		0x3e000
+#define CONFIG_SPL_U_BOOT_SIZE		0x38000
 #define CONFIG_SPL_MC_TUNE_OFFS		0x6800
 
 #define CONFIG_ENV_IS_IN_SPI_FLASH
@@ -78,7 +78,6 @@
 #endif
 
 /* Console */
-#define CONFIG_LTQ_ADVANCED_CONSOLE
 #define CONFIG_BAUDRATE			115200
 #define CONFIG_CONSOLE_ASC		1
 
@@ -88,9 +87,6 @@
 #define CONFIG_CMD_ECHO
 
 /* Boot */
-#define CONFIG_MIPS_BOOT_FDT
-#define CONFIG_FIT
-#define CONFIG_OF_LIBFDT
 #define CONFIG_LZMA
 #define CONFIG_LZO
 
@@ -104,6 +100,9 @@
 /* Pull in default board configs for Lantiq XWAY VRX200 */
 #include <asm/lantiq/config.h>
 #include <asm/arch/config.h>
+
+#undef CONFIG_MIPS_BOOT_FDT
+#undef CONFIG_OF_LIBFDT
 
 #define CONFIG_EXTRA_ENV_SETTINGS	\
 	CONFIG_ENV_LANTIQ_DEFAULTS	\
