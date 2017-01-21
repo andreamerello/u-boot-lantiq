@@ -12,7 +12,8 @@
 
 #define CONFIG_AUTOBOOT
 #define CONFIG_BOOTDELAY 2
-
+#define CONFIG_SYS_SPL_MALLOC_START (CONFIG_SYS_SDRAM_BASE + 100 * 1024 * 1024)
+#define CONFIG_SYS_SPL_MALLOC_SIZE (28 * 1024 * 1024)
 /* Configure SoC */
 #define CONFIG_LTQ_SUPPORT_UART			/* Enable ASC and UART */
 
@@ -34,7 +35,7 @@
 #define CONFIG_SPL_SPI_MAX_HZ		25000000
 #define CONFIG_SPL_SPI_MODE		0
 
-#define CONFIG_LTQ_SPL_COMP_LZO
+#define CONFIG_LTQ_SPL_COMP_LZMA
 #define CONFIG_LTQ_SPL_CONSOLE
 #define CONFIG_LTQ_SPL_MC_TUNE
 #define CONFIG_MISC_INIT_R
@@ -55,9 +56,9 @@
 #define CONFIG_ENV_SPI_MODE		CONFIG_SPL_SPI_MODE
 
 #if defined(CONFIG_SYS_BOOT_SFSPL)
-#define CONFIG_SPL_U_BOOT_OFFS		0x7000
-#define CONFIG_SPL_U_BOOT_SIZE		0x38000
-#define CONFIG_SPL_MC_TUNE_OFFS		0x6800
+#define CONFIG_SPL_U_BOOT_OFFS		0x7400
+#define CONFIG_SPL_U_BOOT_SIZE		0x37c00
+#define CONFIG_SPL_MC_TUNE_OFFS		0x7200
 
 #define CONFIG_ENV_IS_IN_SPI_FLASH
 #define CONFIG_ENV_OVERWRITE
@@ -81,6 +82,7 @@
 #endif
 
 /* Console */
+#define CONFIG_LTQ_ADVANCED_CONSOLE
 #define CONFIG_BAUDRATE			115200
 #define CONFIG_CONSOLE_ASC		1
 
@@ -90,6 +92,9 @@
 #define CONFIG_CMD_ECHO
 
 /* Boot */
+#define CONFIG_MIPS_BOOT_FDT
+#define CONFIG_FIT
+#define CONFIG_OF_LIBFDT
 #define CONFIG_LZMA
 #define CONFIG_LZO
 
@@ -103,9 +108,6 @@
 /* Pull in default board configs for Lantiq XWAY VRX200 */
 #include <asm/lantiq/config.h>
 #include <asm/arch/config.h>
-
-#undef CONFIG_MIPS_BOOT_FDT
-#undef CONFIG_OF_LIBFDT
 
 #define CONFIG_EXTRA_ENV_SETTINGS	\
 	CONFIG_ENV_LANTIQ_DEFAULTS	\
