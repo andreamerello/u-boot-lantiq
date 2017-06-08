@@ -68,10 +68,14 @@
 
 #define MTDPARTS_DEFAULT		\
 	"mtdparts=spi0.4:252k(uboot),4k(uboot_env);nand-xway:-(ubi)"
+
+#define CONFIG_ENV_BOOTUBI						\
+	"bootcmd=ubi part ubi;ubifsmount ubi0:ubi-boot;ubifsload 0x81000000 FRITZ3370_uboot.dtb;ubifsload 0x82000000 uImage;bootm 0x82000000 - 0x81000000"
 #else
 #define CONFIG_ENV_IS_NOWHERE
 
 #define MTDPARTS_DEFAULT		"mtdparts="
+#define CONFIG_ENV_BOOTUBI		"bootcmd="
 #endif
 
 #define MTDIDS_DEFAULT			"nor0=spi0.4,nand0=nand-xway"
@@ -106,13 +110,15 @@
 	"mtdids="MTDIDS_DEFAULT"\0"		\
 	"mtdparts="MTDPARTS_DEFAULT"\0"
 
+
 /* Pull in default board configs for Lantiq XWAY VRX200 */
 #include <asm/lantiq/config.h>
 #include <asm/arch/config.h>
 
 #define CONFIG_EXTRA_ENV_SETTINGS	\
 	CONFIG_ENV_LANTIQ_DEFAULTS	\
-	CONFIG_ENV_MTDPARTS
+	CONFIG_ENV_MTDPARTS		\
+	CONFIG_ENV_BOOTUBI
 
 #define CONFIG_ETHADDR 00:01:02:03:04:05
 #define CONFIG_SERVERIP 192.168.1.2
